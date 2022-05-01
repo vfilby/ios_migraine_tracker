@@ -48,7 +48,7 @@ struct MedicationAddNew: View {
                     let med = Medication(context: viewContext)
                     med.name = name
                     med.dose = dose
-                    //med.image = picture
+                    med.image = picture
                     
                     do {
                         try viewContext.save()

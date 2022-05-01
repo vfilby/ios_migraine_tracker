@@ -15,8 +15,8 @@ struct MedicationListRow: View {
         
         HStack {
             Text(medication.name!)
-//            Text(medication.formatDose())
-//                .foregroundColor(.gray)
+            Text(medication.format_dose())
+                .foregroundColor(.gray)
             
         }
     }

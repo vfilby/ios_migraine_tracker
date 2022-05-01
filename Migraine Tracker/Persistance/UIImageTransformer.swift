@@ -11,18 +11,30 @@
 import Foundation
 import UIKit
 
+@objc(UIImageTransformer)
 class UIImageTransformer: ValueTransformer {
+    
+    override class func transformedValueClass() -> AnyClass {
+            return UIImage.self
+        }
 
     override func transformedValue(_ value: Any?) -> Any? {
 
-        guard let image = value as? UIImage else { return nil }
+        guard let image = value as? UIImage else {
+            NSLog( "returning nil" )
+            return nil
+        }
         return image.pngData()
     }
 
     override func reverseTransformedValue(_ value: Any?) -> Any? {
-        guard let data = value as? Data else { return nil }
+        guard let data = value as? Data else {
+            NSLog( "returning nil" )
+            return nil
+            
+        }
 
-
+        NSLog( "Returning image" )
         let image = UIImage( data: data )
         return image
     }

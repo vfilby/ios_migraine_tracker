@@ -14,10 +14,6 @@ struct MedicationHost: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                EditButton()
-            }
             if editMode?.wrappedValue == .inactive {
                 MedicationSummary(medication: medication)
             } else {
@@ -25,6 +21,9 @@ struct MedicationHost: View {
             }
             
         }
+        .navigationBarItems(
+            trailing: EditButton()
+        )
     }
 }
 

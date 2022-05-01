@@ -14,6 +14,8 @@
 		98458F1A2817A8AC00CBC299 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98458F192817A8AC00CBC299 /* ImagePicker.swift */; };
 		98458F1C281BA1AD00CBC299 /* Migraine_Tracker.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 98458F1B281BA1AD00CBC299 /* Migraine_Tracker.xcdatamodel */; };
 		98458F23281BA8EC00CBC299 /* UIImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98458F22281BA8EC00CBC299 /* UIImageTransformer.swift */; };
+		98A09CBC281D003700F0E566 /* Medication+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A09CBA281D003700F0E566 /* Medication+CoreDataClass.swift */; };
+		98A09CBD281D003700F0E566 /* Medication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A09CBB281D003700F0E566 /* Medication+CoreDataProperties.swift */; };
 		98ACBF58280CDB6700223E6F /* Migraine_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ACBF57280CDB6700223E6F /* Migraine_TrackerApp.swift */; };
 		98ACBF5A280CDB6700223E6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ACBF59280CDB6700223E6F /* ContentView.swift */; };
 		98ACBF5C280CDB6A00223E6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98ACBF5B280CDB6A00223E6F /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		98458F192817A8AC00CBC299 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		98458F1B281BA1AD00CBC299 /* Migraine_Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Migraine_Tracker.xcdatamodel; sourceTree = "<group>"; };
 		98458F22281BA8EC00CBC299 /* UIImageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageTransformer.swift; sourceTree = "<group>"; };
+		98A09CBA281D003700F0E566 /* Medication+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medication+CoreDataClass.swift"; sourceTree = "<group>"; };
+		98A09CBB281D003700F0E566 /* Medication+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medication+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		98ACBF54280CDB6700223E6F /* Migraine Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Migraine Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98ACBF57280CDB6700223E6F /* Migraine_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migraine_TrackerApp.swift; sourceTree = "<group>"; };
 		98ACBF59280CDB6700223E6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 		98ACBF8A280CDD2E00223E6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				98A09CBA281D003700F0E566 /* Medication+CoreDataClass.swift */,
+				98A09CBB281D003700F0E566 /* Medication+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98A09CBC281D003700F0E566 /* Medication+CoreDataClass.swift in Sources */,
 				98458F1A2817A8AC00CBC299 /* ImagePicker.swift in Sources */,
 				98458F152813B6B300CBC299 /* MedicationEdit.swift in Sources */,
 				98458F132813B6AA00CBC299 /* MedicationHost.swift in Sources */,
@@ -330,6 +337,7 @@
 				98458F172813B8E900CBC299 /* MedicationSummary.swift in Sources */,
 				98458F112813738E00CBC299 /* AppHome.swift in Sources */,
 				98ACBF91280D123000223E6F /* MedicationListRow.swift in Sources */,
+				98A09CBD281D003700F0E566 /* Medication+CoreDataProperties.swift in Sources */,
 				98ACBF5A280CDB6700223E6F /* ContentView.swift in Sources */,
 				98ACBF58280CDB6700223E6F /* Migraine_TrackerApp.swift in Sources */,
 				98458F1C281BA1AD00CBC299 /* Migraine_Tracker.xcdatamodel in Sources */,
