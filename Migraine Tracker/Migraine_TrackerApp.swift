@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 @main
 struct Migraine_TrackerApp: App {
     let persistenceController = PersistenceController.shared

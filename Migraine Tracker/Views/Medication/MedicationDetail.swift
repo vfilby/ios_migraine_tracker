@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct MedicationSummary: View {
+struct MedicationDetail: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    var medication: Medication
+    @ObservedObject var medication: Medication
+    @State var medicationEditorConfig: MedicationEditorConfig?
     
     var body: some View {
         ScrollView {
@@ -20,9 +21,6 @@ struct MedicationSummary: View {
                     Text(medication.format_dose())
                     Spacer()
                 }
-                
-                
-                
 
                 GeometryReader { geo in
                     HStack {
@@ -45,13 +43,38 @@ struct MedicationSummary: View {
     
         }
         .navigationTitle(medication.name!)
+        .navigationBarItems(
+            trailing: HStack{
+                Button( action: edit ){
+                    Text("Edit")
+                }
+                .sheet( item: $medicationEditorConfig, onDismiss: didDismiss) { config in
+                    MedicationEditForm( medication: config.medication ) {
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            let nsError = error as NSError
+                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        }
+                        medicationEditorConfig = nil
+                    }
+                    .environment(\.managedObjectContext, config.context)
+                }
+            }
+        )
         .padding()
-        
-            
+    }
+    
+    func edit() {
+        medicationEditorConfig = MedicationEditorConfig(viewContext: viewContext, objectID: medication.objectID )
+    }
+    
+    func didDismiss() {
+    
     }
 }
 
-struct MedicationSummary_Previews: PreviewProvider {
+struct MedicationDetail_Previews: PreviewProvider {
     
     static let context = PersistenceController.preview.container.viewContext
     
@@ -63,6 +86,6 @@ struct MedicationSummary_Previews: PreviewProvider {
         med.unit = "mg"
         med.image = UIImage( imageLiteralResourceName: "product_advil.jpg" )
         
-        return MedicationSummary(medication: med)
+        return MedicationDetail(medication: med)
     }
 }

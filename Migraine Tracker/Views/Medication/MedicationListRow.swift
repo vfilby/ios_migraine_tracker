@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct MedicationListRow: View {
-    var medication: Medication
+    @ObservedObject var medication: Medication
     
     var body: some View {
 
         
-        HStack {
+        LazyHStack {
             Text(medication.name!)
             Text(medication.format_dose())
                 .foregroundColor(.gray)
