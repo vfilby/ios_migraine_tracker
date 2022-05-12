@@ -28,6 +28,8 @@ struct MedicationEditorConfig: Identifiable {
 }
 
 
+
+
 struct MedicationEditForm: View {
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -38,29 +40,20 @@ struct MedicationEditForm: View {
     
     @State private var showImageSheet = false
     
-    
-    
-//    private lazy var childViewContext: NSManagedObjectContext = {
-//        // Initialize Managed Object Context
-//        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-//
-//        // Configure Managed Object Context
-//        managedObjectContext.parent = self.viewContext
-//
-//        return managedObjectContext
-//    }()
-    
-    
+    func isFormValid() -> Bool {
+        return !medication.name!.isEmpty
+    }
     
     var body: some View {
         Form {
-            TextField(medication.name ?? "Medication Name",
-                      text: $medication.name.toUnwrapped(defaultValue: "unnamed"))
-                .padding()
+            EntryField(sfSymbolName: "pills", placeHolder: "Medication name", prompt: "Medication name is required", field: $medication.name.toUnwrapped(defaultValue: "") )
+//            TextField(medication.name ?? "Medication Name",
+//                      text: $medication.name.toUnwrapped(defaultValue: ""))
+//                .padding()
             
             VStack {
                 Text("Dose: \(Int(medication.dose))")
-                Slider(value: $medication.dose, in: 0...1000, step: 5)
+                Slider(value: $medication.dose, in: 0...1000, step: 1)
             }
             .padding()
             
@@ -80,18 +73,26 @@ struct MedicationEditForm: View {
             }
             HStack {
                 Spacer()
-                Button("Submit") {
-                    do {
-                        try viewContext.save()
-                        errorMessage = nil
-                        onSave()
-                    } catch {
-                        let nsError = error as NSError
-                        errorMessage  = "Unresolved error \(nsError), \(nsError.userInfo)"
+                Button(
+                    action: {
+                        do {
+                            try viewContext.save()
+                            errorMessage = nil
+                            onSave()
+                        } catch {
+                            let nsError = error as NSError
+                            errorMessage  = "Unresolved error \(nsError), \(nsError.userInfo)"
+                        }
+                        dismiss()
+                    }) {
+                        Text("Save Medication")
+                            .foregroundColor(.white)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal)
+                            .background(Capsule().fill(Color.blue))
                     }
-                    dismiss()
-                    
-                }
+                .opacity(isFormValid() ? 1 : 0.6)
+                .disabled(!isFormValid())
                 Spacer()
             }
         }
